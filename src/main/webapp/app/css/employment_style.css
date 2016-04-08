@@ -1,0 +1,42 @@
+.centered-form .panel {
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+body {
+	background-color: rgb(230, 235, 240);
+}
+
+.panel-heading {
+	padding: 17px 18px !important;
+	background-color: #337AB7 !important;
+	color: #FFF !important;
+}
+
+.panel-title {
+	font-weight: bold;
+}
+
+.navbar-brand {
+	color: #4c4c4c !important;
+	font-weight: bold !important;
+	font-size: 20px;
+}
+
+.logo {
+	float: left;
+	height: 50px;
+	width: 65px;
+}
+
+.row.centered-form {
+	margin-top: 85px !important;
+}
+
+.navbar {
+	height: 65px;
+}
+
+.navbar>.container {
+	padding-top: 8px;
+}

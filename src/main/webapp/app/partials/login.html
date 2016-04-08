@@ -1,0 +1,158 @@
+<div class="container">
+	<div id="login">
+		<div class="row centered-form">
+			<div
+				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title" style="display: inline-block;">SIGN
+							IN</h2>
+					</div>
+					<div class="panel-body">
+						<form role="form">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="form-group">
+										<input type="text" name="username" id="username"
+											class="form-control input-sm" placeholder="User name"
+											required data-toggle="floatLabel" data-value="no-js">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="form-group">
+										<input type="text" name="last_name" id="password"
+											class="form-control input-sm" placeholder="Password" required
+											data-toggle="floatLabel" data-value="no-js">
+									</div>
+								</div>
+							</div>
+							<input type="submit" value="LOG IN"
+								class="btn btn-info btn-block" style="font-weight: bold">
+							<div class="form-group">
+								<div class="col-md-12 control">
+									<div style="padding-top: 15px;">
+										Don't have an account!
+										<button class="btn btn-link"
+											onClick="$('#login').hide(); $('#sign-up').show()">
+											Sign Up Here</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="sign-up" style="display: none;">
+		<div class="row centered-form">
+			<div
+				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">SIGN UP</h2>
+					</div>
+					<div class="panel-body">
+						<form role="form" name="registerForm" novalidate>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="form-group"
+										ng-class="{'has-error': registerForm.first_name.$invalid && registerForm.first_name.$touched}">
+										<input type="text" name="first_name"
+											class="form-control input-sm" placeholder="First Name"
+											required data-toggle="floatLabel"
+											ng-model="formData.register.firstName">
+										<p class="help-block"
+											ng-show="registerForm.first_name.$touched && registerForm.first_name.$invalid ">First
+											name is Required</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="form-group"
+										ng-class="{ 'has-error' : registerForm.last_name.$invalid && registerForm.last_name.$touched }">
+										<input type="text" name="last_name" id="last_name"
+											class="form-control input-sm" placeholder="Last Name"
+											required data-toggle="floatLabel" data-value="no-js"
+											ng-model="formData.register.lastName">
+										<p class="help-block"
+											ng-show="registerForm.last_name.$error.required && registerForm.last_name.$touched">Last
+											name is Required</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="form-group"
+										ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$touched }">
+										<input type="email" name="email" id="email"
+											class="form-control input-sm" placeholder="Email Address"
+											required data-toggle="floatLabel" data-value="no-js"
+											ng-blur="validateEmail()"
+											ng-model="formData.register.email">
+										<p class="help-block {{registerForm.$invalid = emailAlreadyExists}}"
+											ng-show="registerForm.email.$invalid && registerForm.email.$touched">Enter
+											a valid email. <span ng-show="registerForm.email.$invalid = emailAlreadyExists">Email already exists!</span></p>
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group"
+										ng-class="{'has-error' : (registerForm.password.$touched && registerForm.password.$invalid) || (registerForm.password.$error.minlength || registerForm.password.$error.maxlength)}">
+										<input type="password" name="password" id="password"
+											class="form-control input-sm" placeholder="Password"
+											data-toggle="floatLabel"
+											ng-model="formData.register.password" required
+											ng-minlength="8" ng-maxlength="20">
+
+										<p class="help-block"
+											ng-show="registerForm.password.$error.required && registerForm.password.$touched ">Password
+											is required</p>
+										<p class="help-block"
+											ng-show="!registerForm.password.$error.required && (registerForm.password.$error.minlength || registerForm.password.$error.maxlength) && registerForm.password.$dirty ">Passwords
+											must be between 8 and 20 characters.</p>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group"
+										ng-class="{ 'has-error' : (registerForm.password_confirmation.$error.required && registerForm.password_confirmation.$touched) || (!registerForm.password_confirmation.$error.required && registerForm.password_confirmation.$error.wjValidationError && registerForm.password_confirmation.$dirty) }">
+										<input type="password" name="password_confirmation"
+											id="password_confirmation" class="form-control input-sm"
+											placeholder="Confirm Password" data-toggle="floatLabel"
+											ng-model="passwordConfirmation"
+											wj-validation-error="passwordConfirmation != formData.register.password ? 'Passwords don\'t match' : ''"
+											required>
+
+										<p class="help-block"
+											ng-show="registerForm.password_confirmation.$touched && registerForm.password_confirmation.$error.required">Please
+											confirm your password.</p>
+										<p class="help-block"
+											ng-show="!registerForm.password_confirmation.$error.required && registerForm.password_confirmation.$error.wjValidationError && registerForm.password_confirmation.$dirty ">Passwords
+											do not match.</p>
+									</div>
+								</div>
+							</div>
+							<input type="submit" class="btn btn-info btn-block"
+								style="font-weight: bold" ng-disabled="registerForm.$invalid"
+								ng-click="next('/profile-wizard')" value="Next" />
+						</form>
+						<div class="form-group">
+							<div class="col-md-12 control">
+								<div style="padding-top: 15px;">
+									<button href="#"
+										onClick="$('#login').show(); $('#sign-up').hide()"
+										class="btn btn-link">Sign In Here</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

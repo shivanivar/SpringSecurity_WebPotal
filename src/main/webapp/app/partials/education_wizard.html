@@ -1,0 +1,113 @@
+<div id="wizard-education">
+	<div class="row centered-form">
+		<div
+			class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">Enter Education Details</h2>
+				</div>
+				<div class="panel-body">
+					<form role="form" name="educationDetailsForm" novalidate>
+						<div class="form-group row"
+							ng-class="{ 'has-error' : educationDetailsForm.qualification.$invalid && educationDetailsForm.qualification.$touched }">
+							<label for="qualification" class="col-sm-4 form-control-label">Qualification</label>
+							<div class="col-sm-8">
+								<select type="text" name="qualification" id="qualification"
+									ng-model="formData.education.qualification"
+									class="form-control" data-value="no-js" required>
+									<option ng-selected="true" disabled="true">--Please Select qualification --</option>
+									<option value="1">SSC</option>
+									<option value="2">HSC</option>
+									<option value="3">BE</option>
+									<option value="4">BCA</option>
+									<option value="5">MCA</option>
+									<option value="6">MBA</option>
+									<option value="7">Graduation</option>
+									<option value="8">Other</option>
+								</select>
+								<p class="help-block"
+									ng-show="educationDetailsForm.qualification.$error.required && educationDetailsForm.qualification.$touched ">Qualification
+									is required.</p>
+							</div>
+						</div>
+						<div class="form-group row"
+							ng-class="{ 'has-error' : educationDetailsForm.description.$invalid && educationDetailsForm.description.$touched }">
+							<label for="description" class="col-sm-4 form-control-label">Specialization</label>
+							<div class="col-sm-8">
+								<input type="text" id="description" name="description"
+									class="form-control" placeholder="Specialization"
+									ng-model="formData.education.specialization" required>
+								<p class="help-block"
+									ng-show="educationDetailsForm.description.$error.required && educationDetailsForm.description.$touched ">Specialization
+									is required.</p>
+							</div>
+						</div>
+						<div class="form-group row"
+							ng-class="{ 'has-error' : educationDetailsForm.startDate.$invalid && educationDetailsForm.startDate.$touched }">
+							<label for="startDate" class="col-sm-4 form-control-label">Start
+								Date</label>
+							<div class="col-sm-8">
+								<input type="date" id="startDate" name="startDate"
+									class="form-control date" placeholder="Start Date"
+									ng-model="formData.education.startDate" required>
+								<p class="help-block"
+									ng-show="educationDetailsForm.startDate.$error.required && educationDetailsForm.startDate.$touched ">Start
+									date is required.</p>
+							</div>
+						</div>
+						<div class="form-group row"
+							ng-class="{ 'has-error' : educationDetailsForm.endDate.$invalid && educationDetailsForm.endDate.$touched }">
+							<label for="endDate" class="col-sm-4 form-control-label">End
+								Date</label>
+							<div class="col-sm-8">
+								<input type="date" id="endDate" name="endDate"
+									class="form-control date" placeholder="End Date"
+									ng-model="formData.education.endDate" required>
+								<p class="help-block"
+									ng-show="educationDetailsForm.endDate.$error.required && educationDetailsForm.endDate.$touched ">End
+									date is required.</p>
+							</div>
+						</div>
+						<div class="form-group row"
+							ng-class="{ 'has-error' : educationDetailsForm.university.$invalid && educationDetailsForm.university.$touched }">
+							<label for="university" class="col-sm-4 form-control-label">University</label>
+							<div class="col-sm-8">
+								<input type="text" id="university" name="university"
+									class="form-control" placeholder="University"
+									ng-model="formData.education.university" required>
+								<p class="help-block"
+									ng-show="educationDetailsForm.university.$error.required && educationDetailsForm.university.$touched ">University
+									is required.</p>
+							</div>
+						</div>
+						<div class="form-group row"
+							ng-class="{ 'has-error' : educationDetailsForm.percentage.$invalid && educationDetailsForm.percentage.$touched }">
+							<label for="percentage" class="col-sm-4 form-control-label">Percentage</label>
+							<div class="col-sm-8">
+								<input type="number" id="percentage" name="percentage"
+									class="form-control" placeholder="Percentage"
+									ng-model="formData.education.percentage" required ng-min="0" ng-max="100">
+								<p class="help-block"
+									ng-show="educationDetailsForm.percentage.$error.required && educationDetailsForm.percentage.$touched ">Percentage
+									is required.</p>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-6">
+								<button type="submit" class="btn btn-info btn-block"
+									style="font-weight: bold" value="back"
+									ng-click="next('/profile-wizard')">Prev</button>
+							</div>
+							<div class="col-sm-6">
+								<button type="submit" class="btn btn-info btn-block"
+									style="font-weight: bold" value="Next"
+									ng-disabled="educationDetailsForm.$invalid"
+									ng-click="next('/employment_wizard')">Next</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

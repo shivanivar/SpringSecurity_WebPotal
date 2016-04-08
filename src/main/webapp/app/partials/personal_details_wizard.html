@@ -1,0 +1,103 @@
+<div id="wizard-education">
+	<div class="row centered-form">
+		<div
+			class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">Personal Details</h2>
+				</div>
+				<div class="panel-body">
+					<form role="form" name="personalDetailsForm" novalidate>
+						<div class="form-group row">
+							<label for="mobile" class="col-sm-4 form-control-label">Mobile</label>
+							<div class="col-sm-8"
+								ng-class="{ 'has-error' : (personalDetailsForm.mobile.$invalid && personalDetailsForm.mobile.$touched) || (personalDetailsForm.mobile.$error.minlength || personalDetailsForm.mobile.$error.maxlength) }">
+								<input type="number" id="mobile" name="mobile"
+									class="form-control" placeholder="mobile number"
+									ng-model="formData.personalDetails.mobileNo" ng-minlength="10"
+									ng-maxlength="10" required>
+								<p class="help-block"
+									ng-show="personalDetailsForm.mobile.$error.required && personalDetailsForm.mobile.$touched ">Mobile
+									number is required.</p>
+								<p class="help-block"
+									ng-show="personalDetailsForm.mobile.$error.minlength || personalDetailsForm.mobile.$error.maxlength ">Mobile
+									number should be 10 digits only.</p>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="permanentAddress" class="col-sm-4 form-control-label">Permanent
+								Address</label>
+							<div class="col-sm-8"
+								ng-class="{ 'has-error' : personalDetailsForm.permanentAddress.$invalid && personalDetailsForm.permanentAddress.$touched }">
+								<input type="text" id="permanentAddress" name="permanentAddress"
+									class="form-control date" placeholder="Permanent Address"
+									ng-model="formData.personalDetails.permanentAddress" required>
+								<p class="help-block"
+									ng-show="personalDetailsForm.permanentAddress.$error.required && personalDetailsForm.permanentAddress.$touched ">Permanent
+									Address is required.</p>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="currentAddress" class="col-sm-4 form-control-label">Current
+								Address</label>
+							<div class="col-sm-8"
+								ng-class="{ 'has-error' : personalDetailsForm.currentAddress.$invalid && personalDetailsForm.currentAddress.$touched }">
+								<input type="text" id="currentAddress" name="currentAddress"
+									class="form-control date" placeholder="Current Address"
+									ng-model="formData.personalDetails.currentAddress" required>
+								<p class="help-block"
+									ng-show="personalDetailsForm.currentAddress.$error.required && personalDetailsForm.currentAddress.$touched ">Current
+									Address is required.</p>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 form-control-label">Gender</label>
+							<div class="col-sm-8"
+								ng-init="formData.personalDetails.gender = 'm'">
+								<div class="radio">
+									<label for="gender_male"> <input type="radio"
+										id="gender_male" name="gender" value="m"
+										ng-model="formData.personalDetails.gender" ng-checked="true">
+										Male
+									</label>
+								</div>
+								<div class="radio">
+									<label for="gender_female"> <input type="radio"
+										id="gender_female" name="gender" value="f"
+										ng-model="formData.personalDetails.gender"> Female
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="dob" class="col-sm-4 form-control-label">Birth
+								Date</label>
+							<div class="col-sm-8"
+								ng-class="{ 'has-error' : personalDetailsForm.dob.$invalid && personalDetailsForm.dob.$touched }">
+								<input type="date" id="dob" name="dob" class="form-control date"
+									placeholder="Birth Date"
+									ng-model="formData.personalDetails.birthDate" required>
+								<p class="help-block"
+									ng-show="personalDetailsForm.dob.$error.required && personalDetailsForm.dob.$touched ">Birthdate
+									is required.</p>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-6">
+								<button type="submit" class="btn btn-info btn-block"
+									style="font-weight: bold" value="back"
+									ng-click="next('/login')">Prev</button>
+							</div>
+							<div class="col-sm-6">
+								<button type="submit" class="btn btn-info btn-block"
+									style="font-weight: bold" value="Next"
+									ng-disabled="personalDetailsForm.$invalid"
+									ng-click="next('/education-wizard')">Next</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
